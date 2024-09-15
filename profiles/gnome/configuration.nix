@@ -12,6 +12,10 @@
       (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
     ];
 
+  sops.defaultSopsFile = "/secrets/secrets.yaml";
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/pdenti/.config/sops/age/keys.txt";
+
   # enable flakes
   nix.settings.experimental-features = [
     "nix-command"

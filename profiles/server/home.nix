@@ -10,7 +10,6 @@
     EDITOR = "vim";
     VISUAL = "vim";
     SOPS_AGE_KEY_FILE="$HOME/.sops/age.txt";
-    AGE_PUBLIC="$(cat $HOME/.sops/age.txt | grep -oP "public key: \K(.*)")";
   };
 
   # Programs
@@ -26,6 +25,9 @@
       sshpassword = "ssh -o PreferredAuthentications=password -o PubkeyAuthentication=no";
       clear-nix-boot-menu = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     };
+    initExtra = ''
+      export AGE_PUBLIC="$(cat $HOME/.sops/age.txt | grep -oP "public key: \K(.*)")";
+    '';
   };
 
   programs.vim = {

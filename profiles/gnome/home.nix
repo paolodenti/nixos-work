@@ -38,7 +38,6 @@
     VISUAL = "vim";
     CASE_SENSITIVE = "true";
     SOPS_AGE_KEY_FILE="$HOME/.sops/age.txt";
-    AGE_PUBLIC="$(cat $HOME/.sops/age.txt | grep -oP "public key: \K(.*)")";
   };
 
   # Programs
@@ -106,6 +105,7 @@
     ];
     initExtra = ''
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      export AGE_PUBLIC="$(cat $HOME/.sops/age.txt | grep -oP "public key: \K(.*)")";
     '';
   };
 

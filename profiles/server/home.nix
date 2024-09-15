@@ -25,8 +25,8 @@
       clear-nix-boot-menu = "sudo nix-collect-garbage -d && sudo /run/current-system/bin/switch-to-configuration boot";
     };
     initExtra = ''
-      export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age.txt";
-      export AGE_PUBLIC="$(cat $HOME/.config/sops/age.txt | grep -oP "public key: \K(.*)")";
+      export SOPS_AGE_KEY_FILE="$HOME/.config/sops/keys.txt";
+      export AGE_PUBLIC="$(cat $HOME/.config/sops/keys.txt | grep -oP "public key: \K(.*)")";
     '';
   };
 

@@ -18,7 +18,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, sops-nix, ...}:
+  outputs = { self, nixpkgs, home-manager, disko, ...}:
     let
       # -- system settings -- #
       system = "x86_64-linux";
@@ -42,14 +42,12 @@
           modules = [
             (./profiles + ("/" + profile) + "/configuration.nix")
             disko.nixosModules.disko
-            sops-nix.nixosModules.sops
           ];
           specialArgs = {
             inherit hostname;
             inherit timezone;
             inherit username;
             inherit fullname;
-            inherit sops-nix;
           };
         };
       };

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, sops-nix, hostname, timezone, username, fullname, ... }:
+{ config, pkgs, lib, hostname, timezone, username, fullname, ... }:
 
 {
   imports =
@@ -11,10 +11,6 @@
       (../../. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
       (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
     ];
-
-  sops.defaultSopsFile = "/secrets/secrets.yaml";
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/pdenti/.config/sops/age/keys.txt";
 
   # enable flakes
   nix.settings.experimental-features = [

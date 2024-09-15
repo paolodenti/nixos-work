@@ -64,6 +64,7 @@
             inherit username;
             inherit fullname;
             inherit email;
+            inherit sops-nix;
           };
         };
       };

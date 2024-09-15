@@ -106,6 +106,15 @@
     sops
     age
     dconf2nix
+    gnumake42
+    kubectl
+    stern
+    helm
+    k9s
+    jq
+    doctl
+    zip
+    unzip
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

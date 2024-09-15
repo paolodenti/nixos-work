@@ -6,28 +6,12 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
+      # Hardware scan results
       (./. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
+      # Bootloader config
+      (./. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
     ];
-
-  # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
-
-  # Lower swappiness
-  boot.kernel.sysctl = {
-    "vm.swappiness" = 10;
-  };
-
-  # Setup keyfile
-  boot.initrd.secrets = {
-    "/boot/crypto_keyfile.bin" = null;
-  };
-
-  boot.loader.grub.enableCryptodisk = true;
-
-  boot.initrd.luks.devices."luks-836af434-dc93-42f3-9354-c8c01533b56b".keyFile = "/boot/crypto_keyfile.bin";
 
   # enable flakes
   nix.settings.experimental-features = [

@@ -59,7 +59,6 @@
     curl
     wget
     git
-    zsh
     sops
     age
     dconf2nix
@@ -97,14 +96,14 @@
     users = {
       ${username} = {
         isNormalUser = true;
-        description = fullname
+        description = fullname;
         extraGroups = [
           "networkmanager"
           "wheel"
           "docker"
         ];
         password = "password";
-        shell = pkgs.zsh;
+        shell = pkgs.bash;
         packages = with pkgs; [
         ];
       };

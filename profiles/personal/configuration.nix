@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, hostname, timezone, ... }:
 
 {
   imports =
@@ -42,7 +42,7 @@
   };
 
   # networking
-  networking.hostName = "macmini3";
+  networking.hostName = hostname;
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -53,7 +53,7 @@
   networking.networkmanager.enable = true;
 
   # Set your time zone.
-  time.timeZone = "America/Los_Angeles";
+  time.timeZone = timezone;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";

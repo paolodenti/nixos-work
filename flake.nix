@@ -1,5 +1,4 @@
 {
-
   description = "Booter flake";
 
   inputs = {
@@ -10,25 +9,43 @@
 
   outputs = { self, nixpkgs, home-manager, ...}:
     let
-      lib = nixpkgs.lib;
+      # -- system settings -- #
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
+      profile = "personal";
+      hostname = "macmini3";
+      timezone = "America/Los_Angeles";
 
+      # -- user settings -- #
+      username = "pdenti";
+      fullname = "Paolo Denti";
+      email = "paolo.denti@gmail.com";
+
+      # -- libs -- #
+      lib = nixpkgs.lib;
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
+    {
       nixosConfigurations = {
-        macmini3 = lib.nixosSystem {
+        ${hostname} = lib.nixosSystem {
           inherit system;
-          modules = [ ./configuration.nix ];
+          modules = [ (./. + "/profiles" + ("/" + profile) + "/configuration.nix") ];
+          specialArgs = {
+            inherit hostname;
+            inherit timezone;
+          };
         };
       };
 
       homeConfigurations = {
-        pdenti = home-manager.lib.homeManagerConfiguration {
+        ${username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          modules = [ ./home.nix ];
+          modules = [ (./. + "/profiles" + ("/" + profile) + "/home.nix") ];
+          extraSpecialArgs = {
+            inherit username;
+            inherit fullname;
+            inherit email;
+          };
         };
       };
-
     };
-
 }

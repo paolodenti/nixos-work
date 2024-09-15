@@ -56,14 +56,13 @@
         ${username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            (./profiles + ("/" + profile) + "/home.nix")
             sops-nix.nixosModules.sops
+            (./profiles + ("/" + profile) + "/home.nix")
           ];
           extraSpecialArgs = {
             inherit username;
             inherit fullname;
             inherit email;
-            inherit sops-nix;
           };
         };
       };

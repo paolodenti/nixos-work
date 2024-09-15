@@ -1,4 +1,4 @@
-{ config, pkgs, sops-nix, username, fullname, email, ... }:
+{ config, pkgs, username, fullname, email, ... }:
 
 {
   home.username = username;

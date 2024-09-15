@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, hostname, timezone, username, fullname, ... }:
+{ config, pkgs, lib, sops-nix, hostname, timezone, username, fullname, ... }:
 
 {
   imports =
@@ -10,6 +10,7 @@
       (../../. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
       (../../. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
       (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
+      sops-nix.nixosModules.sops
     ];
 
   # enable flakes

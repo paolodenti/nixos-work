@@ -7,9 +7,8 @@
 {
   imports =
     [
-      # Hardware scan results
       (./. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
-      # Bootloader config
+      (./. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
       (./. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
     ];
 

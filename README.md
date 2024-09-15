@@ -5,12 +5,11 @@
 - `nix-shell -p git vim`
 - `git clone https://github.com/paolodenti/nixos-work.git && cd nixos-work`
 - `nix --experimental-features "nix-command flakes" run github:nix-community/disko -- --mode disko ./hosts/<the host>/disko-config.nix`
-- if a new host, execute the steps below
+- if a new host, execute the steps in `Adding a new host to the flake`
 - `mkdir -p /mnt/etc/nixos`
 - `cp -r * /mnt/etc/nixos/.`
 - `nixos-install --root /mnt --flake '/mnt/etc/nixos/#<the host>`
-- ctrl-d, ctrl-d, `
-shutdown -h now`
+- ctrl-d, ctrl-d, `shutdown -h now`
 
 ## At the first login, run home manger
 

@@ -17,6 +17,7 @@
 - login using `password` as password
 - open a new terminal
 - `home-manager switch --flake /etc/nixos`
+- change the password
 
 ## Adding a new host to the flake
 

@@ -42,14 +42,12 @@
           modules = [
             (./profiles + ("/" + profile) + "/configuration.nix")
             disko.nixosModules.disko
-            sops-nix.nixosModules.sops
           ];
           specialArgs = {
             inherit hostname;
             inherit timezone;
             inherit username;
             inherit fullname;
-            inherit sops-nix;
           };
         };
       };
@@ -59,11 +57,13 @@
           inherit pkgs;
           modules = [
             (./profiles + ("/" + profile) + "/home.nix")
+            sops-nix.nixosModules.sops
           ];
           extraSpecialArgs = {
             inherit username;
             inherit fullname;
             inherit email;
+            inherit sops-nix;
           };
         };
       };

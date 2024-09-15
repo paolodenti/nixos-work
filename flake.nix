@@ -42,6 +42,7 @@
           modules = [
             (./profiles + ("/" + profile) + "/configuration.nix")
             disko.nixosModules.disko
+            sops-nix.nixosModules.sops
           ];
           specialArgs = {
             inherit hostname;
@@ -56,8 +57,8 @@
         ${username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            sops-nix.nixosModules.sops
             (./profiles + ("/" + profile) + "/home.nix")
+            sops-nix.nixosModules.sops
           ];
           extraSpecialArgs = {
             inherit username;

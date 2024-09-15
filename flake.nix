@@ -49,6 +49,7 @@
             inherit timezone;
             inherit username;
             inherit fullname;
+            inherit sops-nix;
           };
         };
       };

@@ -104,8 +104,8 @@
     ];
     initExtra = ''
       [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-      export SOPS_AGE_KEY_FILE="$HOME/.config/sops/keys.txt";
-      export AGE_PUBLIC="$(cat $HOME/.config/sops/keys.txt | grep -oP "public key: \K(.*)")";
+      export SOPS_AGE_KEY_FILE="$HOME/.config/sops/age/keys.txt";
+      export AGE_PUBLIC="$(cat $HOME/.config/sops/age/keys.txt | grep -oP "public key: \K(.*)")";
     '';
   };
 

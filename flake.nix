@@ -58,13 +58,11 @@
           inherit pkgs;
           modules = [
             (./profiles + ("/" + profile) + "/home.nix")
-            sops-nix.nixosModules.sops
           ];
           extraSpecialArgs = {
             inherit username;
             inherit fullname;
             inherit email;
-            inherit sops-nix;
           };
         };
       };

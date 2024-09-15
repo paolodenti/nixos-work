@@ -1,10 +1,6 @@
-{ config, pkgs, username, fullname, email, sops-nix, ... }:
+{ config, pkgs, username, fullname, email, ... }:
 
 {
-  imports = [
-    sops-nix.homeManagerModules.sops
-  ];
-  
   home.username = username;
   home.homeDirectory = "/home/" + username;
 

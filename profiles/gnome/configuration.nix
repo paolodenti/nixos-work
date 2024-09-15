@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, lib, hostname, timezone, ... }:
+{ config, pkgs, lib, hostname, timezone, username, fullname, ... }:
 
 {
   imports =
     [
-      (./. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
-      (./. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
-      (./. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
+      (../../. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
+      (../../. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
+      (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
     ];
 
   # enable flakes
@@ -26,7 +26,6 @@
 
   # networking
   networking.hostName = hostname;
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -88,9 +87,6 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -117,15 +113,11 @@
     unzip
   ];
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
   programs = {
     zsh = {
+      enable = true;
+    };
+    firefox = {
       enable = true;
     };
   };
@@ -154,9 +146,9 @@
   users = {
     mutableUsers = true;
     users = {
-      pdenti = {
+      ${username} = {
         isNormalUser = true;
-        description = "Paolo Denti";
+        description = fullname;
         extraGroups = [
           "networkmanager"
           "wheel"
@@ -165,7 +157,6 @@
         password = "password";
         shell = pkgs.zsh;
         packages = with pkgs; [
-          # thunderbird
         ];
       };
     };

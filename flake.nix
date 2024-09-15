@@ -4,9 +4,11 @@
   inputs = {
     # nixos
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+
     # home manager
     home-manager.url = "github:nix-community/home-manager/release-24.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     # disko
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -16,7 +18,7 @@
     let
       # -- system settings -- #
       system = "x86_64-linux";
-      profile = "personal";
+      profile = "gnome";
       hostname = "macmini3";
       timezone = "America/Los_Angeles";
 
@@ -34,12 +36,14 @@
         ${hostname} = lib.nixosSystem {
           inherit system;
           modules = [
-            ./configuration.nix
+            (./profiles + ("/" + profile) + "/configuration.nix")
             disko.nixosModules.disko
           ];
           specialArgs = {
             inherit hostname;
             inherit timezone;
+            inherit username;
+            inherit fullname;
           };
         };
       };
@@ -48,7 +52,7 @@
         ${username} = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [
-            ./home.nix
+            (./profiles + ("/" + profile) + "/home.nix")
           ];
           extraSpecialArgs = {
             inherit username;

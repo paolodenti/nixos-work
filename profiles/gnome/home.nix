@@ -24,7 +24,7 @@
   ];
 
   home.file = {
-    ".p10k.zsh".text = builtins.readFile ./dotfiles/p10k.zsh;
+    ".p10k.zsh".text = builtins.readFile ../../dotfiles/p10k.zsh;
 
     # # You can also set the file content immediately.
     # ".gradle/gradle.properties".text = ''

@@ -10,6 +10,7 @@
     EDITOR = "vim";
     VISUAL = "vim";
     AGE_PUBLIC="age1jrs9h7a8huy99mv9dz6ucqxcrehyenxxxg2ar8yzqwqg7nynqe8q43r2nq";
+    SOPS_AGE_KEY_FILE="$HOME/.sops/age.txt";
   };
 
   # Programs

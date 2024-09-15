@@ -12,9 +12,13 @@
     # disko
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    # sops
+    sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, ...}:
+  outputs = { self, nixpkgs, home-manager, disko, sops-nix, ...}:
     let
       # -- system settings -- #
       system = "x86_64-linux";
@@ -38,6 +42,7 @@
           modules = [
             (./profiles + ("/" + profile) + "/configuration.nix")
             disko.nixosModules.disko
+            sops-nix.nixosModules.sops
           ];
           specialArgs = {
             inherit hostname;

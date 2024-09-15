@@ -7,7 +7,7 @@
   home.stateVersion = "24.05";
 
   home.packages = [
-    pkgs.hello
+    # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -132,7 +132,6 @@
       };
     };
   };
-
 
   # gnome natural scrolling
   dconf.settings = {

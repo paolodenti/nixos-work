@@ -10,7 +10,7 @@
       (../../. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
       (../../. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
       (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
-      inputs.sops-nixosModules.sops
+      inputs.sops-nix.nixosModules.sops
     ];
 
   # enable flakes

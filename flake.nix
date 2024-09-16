@@ -44,6 +44,7 @@
             disko.nixosModules.disko
           ];
           specialArgs = {
+            inherit inputs;
             inherit hostname;
             inherit timezone;
             inherit username;

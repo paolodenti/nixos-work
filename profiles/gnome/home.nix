@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ../../modules/user/programs/home-manager.nix
     ../../modules/user/programs/zsh.nix
     ../../modules/user/programs/vim.nix
     ../../modules/user/programs/git.nix
@@ -45,9 +46,6 @@
     CASE_SENSITIVE = "true";
     AGE_PUBLIC="age1jrs9h7a8huy99mv9dz6ucqxcrehyenxxxg2ar8yzqwqg7nynqe8q43r2nq";
   };
-
-  # Programs
-  programs.home-manager.enable = true;
 
   # gnome natural scrolling
   dconf.settings = {

@@ -4,6 +4,7 @@
   imports = [
     ../../modules/user/programs/zsh.nix
     ../../modules/user/programs/vim.nix
+    ../../modules/user/programs/git.nix
   ];
 
   home.username = username;
@@ -47,25 +48,6 @@
 
   # Programs
   programs.home-manager.enable = true;
-
-  programs.git = {
-    package = pkgs.gitAndTools.gitFull;
-    enable = true;
-    userName = fullname;
-    userEmail = email;
-    extraConfig = {
-      core = {
-        editor = "vim";
-      };
-      push = {
-        autoSetupRemote = "true";
-        default = "current";
-      };
-      init = {
-        defaultBranch = "main";
-      };
-    };
-  };
 
   # gnome natural scrolling
   dconf.settings = {

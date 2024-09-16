@@ -3,6 +3,7 @@
 {
   imports = [
     ../../modules/user/programs/zsh.nix
+    ../../modules/user/programs/vim.nix
   ];
 
   home.username = username;
@@ -46,13 +47,6 @@
 
   # Programs
   programs.home-manager.enable = true;
-
-  programs.vim = {
-    enable = true;
-    extraConfig = ''
-      syntax on
-    '';
-  };
 
   programs.git = {
     package = pkgs.gitAndTools.gitFull;

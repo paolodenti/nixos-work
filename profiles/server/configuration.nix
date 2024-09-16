@@ -5,24 +5,18 @@
 { config, pkgs, lib, hostname, timezone, username, fullname, ... }:
 
 {
-  imports =
-    [
-      (../../. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
-      (../../. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
-      (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
-    ];
+  imports = [
+    (../../. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
+    (../../. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
+    (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
+    ../../modules/system/docker.nix
+  ];
 
   # enable flakes
   nix.settings.experimental-features = [
     "nix-command"
     "flakes"
   ];
-
-  # docker
-  virtualisation.docker = {
-    enable = true;
-    extraOptions = "--iptables=false";
-  };
 
   # networking
   networking.hostName = hostname;

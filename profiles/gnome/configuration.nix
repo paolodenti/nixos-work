@@ -9,13 +9,8 @@
     (../../. + "/hosts" + ("/" + hostname) + "/hardware-configuration.nix")
     (../../. + "/hosts" + ("/" + hostname) + "/disko-config.nix")
     (../../. + "/hosts" + ("/" + hostname) + "/bootloader.nix")
+    ../../modules/system/features.nix
     ../../modules/system/docker.nix
-  ];
-
-  # enable flakes
-  nix.settings.experimental-features = [
-    "nix-command"
-    "flakes"
   ];
 
   # networking

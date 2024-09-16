@@ -18,7 +18,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, home-manager, disko, ...}:
+  outputs = { self, nixpkgs, home-manager, disko, ...}@inputs:
     let
       # -- system settings -- #
       system = "x86_64-linux";
